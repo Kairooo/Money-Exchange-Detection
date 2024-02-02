@@ -4,12 +4,10 @@ import creds
 
 api_key = creds.api_key
 location = 'Tottenham Court Road, London'
-radius = 1000  # 1km for now but can be adjusted later
-keyword = 'money exchange'
+radius = 10000  # 1km for now but can be adjusted later
+keywords = ['money exchange', 'currency exchange', 'forex', 'foreign exchange']
 
-url = f'https://maps.googleapis.com/maps/api/place/textsearch/json?query={keyword}+in+{location}&radius={radius}&key={api_key}'
-response = requests.get(url)
-results = response.json().get('results', [])
+
 
 # Process the results and store in a database
 business_database = []
@@ -18,15 +16,20 @@ business_database = []
 photo_directory = 'business_photos'
 os.makedirs(photo_directory, exist_ok=True)
 
-for result in results:
-    business_data = {
-        'name': result.get('name', ''),
-        'address': result.get('formatted_address', ''),
-        'types': result.get('types', []),
-        'photo_reference': result.get('photos', [])[0].get('photo_reference', '') if result.get('photos') else ''
-        # Add more fields as needed
-    }
-    business_database.append(business_data)
+for keyword in keywords:
+    url = f'https://maps.googleapis.com/maps/api/place/textsearch/json?query={keyword}+in+{location}&radius={radius}&key={api_key}'
+    response = requests.get(url)
+    results = response.json().get('results', [])
+
+    for result in results:
+        business_data = {
+            'name': result.get('name', ''),
+            'address': result.get('formatted_address', ''),
+            'types': result.get('types', []),
+            'photo_reference': result.get('photos', [])[0].get('photo_reference', '') if result.get('photos') else ''
+            # Add more fields as needed
+        }
+        business_database.append(business_data)
 
 for entry in business_database:
     if entry['photo_reference']:
