@@ -5,9 +5,7 @@ import creds
 api_key = creds.api_key
 location = 'Oxford Street, London'
 radius = 10000  # 1km for now but can be adjusted later
-keywords = ['money exchange', 'currency exchange', 'forex', 'foreign exchange']
-
-
+keywords = ['money exchange', 'currency exchange', 'forex', 'foreign exchange', 'bureau de change']
 
 # Process the results and store in a database
 business_database = []
@@ -26,8 +24,7 @@ for keyword in keywords:
             'name': result.get('name', ''),
             'address': result.get('formatted_address', ''),
             'types': result.get('types', []),
-            'photo_reference': result.get('photos', [])[0].get('photo_reference', '') if result.get('photos') else ''
-            # Add more fields as needed
+            'photo_reference': result.get('photos', [])[0].get('photo_reference', '') if result.get('photos') else ''   
         }
         business_database.append(business_data)
 
