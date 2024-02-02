@@ -3,7 +3,7 @@ import requests
 import creds
 
 api_key = creds.api_key
-location = 'Tottenham Court Road, London'
+location = 'Oxford Street, London'
 radius = 10000  # 1km for now but can be adjusted later
 keywords = ['money exchange', 'currency exchange', 'forex', 'foreign exchange']
 
