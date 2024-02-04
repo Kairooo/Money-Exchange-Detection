@@ -24,7 +24,7 @@ def detect_text(image_path, words_to_check):
 
     return False
 
-# Move the images that contain any of the specified words to a new folder
+# Move the images from input_directory that contain any of the specified words to a new folder output_directory
 def process_images(words_to_check,input_directory,output_directory):
     input_directory = 'business_photos'
     output_directory = 'money_exchange_photos'
