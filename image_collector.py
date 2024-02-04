@@ -4,9 +4,8 @@ import creds
 
 api_key = creds.api_key
 
-def get_business_photos(location, keywords, radius):
+def get_business_photos(location, keywords, radius, photo_directory):
     business_database = []
-    photo_directory = 'business_photos'
     os.makedirs(photo_directory, exist_ok=True) #Create the directory if it doesn't exist
 
     for keyword in keywords:
