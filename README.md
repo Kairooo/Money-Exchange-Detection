@@ -10,6 +10,6 @@
  ## Setup
  - Download or clone the repository
  - Get API key by going to [Google Cloud Console](https://console.cloud.google.com/welcome/new?hl=en) 
- - Add a creds.py file to the repository and write api_key = [INSERT YOUR API KEY] in that file 
+ - Add a creds.py file to the repository and write api_key = 'YOUR_API_KEY' in that file 
  - Setup Cloud Vision by going to [Cloud Vision Setup](https://cloud.google.com/vision/docs/setup)
  - We are good to go! run main.py!
