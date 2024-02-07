@@ -4,15 +4,18 @@ import creds
 
 api_key = creds.api_key
 
+# keywords must be a list of strings, radius is a number in meters, photo_directory is a string of the directory name
 def get_business_photos(location, keywords, radius, photo_directory):
     business_database = []
     os.makedirs(photo_directory, exist_ok=True) #Create the directory if it doesn't exist
 
+    #Gets pictures for each keyword
     for keyword in keywords:
         url = f'https://maps.googleapis.com/maps/api/place/textsearch/json?query={keyword}+in+{location}&radius={radius}&key={api_key}'
         response = requests.get(url)
         results = response.json().get('results', [])
 
+        #Gets the relevant data for each business and adds to database
         for result in results:
             business_data = {
                 'name': result.get('name', ''),
@@ -22,6 +25,7 @@ def get_business_photos(location, keywords, radius, photo_directory):
             }
             business_database.append(business_data)
 
+    #Writes the photos from the database to the photo_directory
     for entry in business_database:
         if entry['photo_reference']:
             photo_filename = f'{entry["name"].replace(" ", "_").replace("/", "_")}_photo.jpg'

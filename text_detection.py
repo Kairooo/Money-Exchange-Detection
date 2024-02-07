@@ -12,6 +12,7 @@ def detect_text(image_path, words_to_check):
     response = client.text_detection(image=image)
     texts = response.text_annotations
 
+    
     for text in texts:
         if any(word.lower() in text.description.lower() for word in words_to_check):
             return True
@@ -26,9 +27,6 @@ def detect_text(image_path, words_to_check):
 
 # Move the images from input_directory that contain any of the specified words to a new folder output_directory
 def process_images(words_to_check,input_directory,output_directory):
-    input_directory = 'business_photos'
-    output_directory = 'money_exchange_photos'
-    
     os.makedirs(output_directory, exist_ok=True) #Create the directory if it doesn't exist
 
     for filename in os.listdir(input_directory):
