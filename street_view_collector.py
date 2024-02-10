@@ -28,7 +28,7 @@ def update_location(location, step_size=0.001, direction='E'):
 
     return new_location
 
-def get_street_view_images(location, photo_directory, image_count, step_size=0.001):
+def get_street_view_images(location, photo_directory, image_count,fov, step_size=0.001):
     
     os.makedirs(photo_directory, exist_ok=True)  # Create the directory if it doesn't exist
 
@@ -37,7 +37,7 @@ def get_street_view_images(location, photo_directory, image_count, step_size=0.0
     # Iterates through the number of images requested and saves them to the photo_directory
     for i in range(image_count):
 
-        street_view_url = f'https://maps.googleapis.com/maps/api/streetview?size=600x300&location={location}&key={api_key}&source=outdoor'
+        street_view_url = f'https://maps.googleapis.com/maps/api/streetview?size=600x300&location={location}&key={api_key}&fov={fov}&size=640x640&source=outdoor'
         street_view_response = requests.get(street_view_url)
         street_view_response.raise_for_status()
 
