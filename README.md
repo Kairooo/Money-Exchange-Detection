@@ -9,7 +9,9 @@ It uses the Places API to get pictures in the area of a given location. It will 
 
  ## Setup
  - Download or clone the repository
- - Get the API key by going to [Google Cloud Console](https://console.cloud.google.com/welcome/new?hl=en) 
- - Add a creds.py file to the repository and write api_key = 'YOUR_API_KEY' in that file 
+ - Get the GCP API key by going to [Google Cloud Console](https://console.cloud.google.com/welcome/new?hl=en) 
+ - Add a creds.py file to the repository and write gcp_api_key = 'YOUR_API_KEY' in that file 
  - Setup Cloud Vision by going to [Cloud Vision Setup](https://cloud.google.com/vision/docs/setup)
+ - Get the Companies House API key by going to [Companies House Setup](https://developer-specs.company-information.service.gov.uk/guides/gettingStarted) and following the guide making sure to use a live application instead of a test application and getting a REST key.
+ - Add ch_api_key = 'YOUR_API_KEY' to creds.py 
  - We are good to go! run main.py!
