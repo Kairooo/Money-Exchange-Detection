@@ -2,10 +2,9 @@ import os
 import requests
 import creds
 
-api_key = creds.api_key
-
 # keywords must be a list of strings, radius is a number in meters, photo_directory is a string of the directory name
 def get_business_photos(location, keywords, radius, photo_directory):
+    api_key = creds.gcp_api_key
     business_database = []
     os.makedirs(photo_directory, exist_ok=True) #Create the directory if it doesn't exist
 
